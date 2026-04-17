@@ -14,7 +14,7 @@
     <style>
         body {
             overflow: hidden;
-            font-family: 'Magistral', 'Poppins', sans-serif;
+            font-family: 'Poppins', sans-serif;
             background: black;
         }
 
