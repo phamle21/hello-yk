@@ -168,30 +168,61 @@
 </div>
 
     <!-- CONTROLS -->
-<div id="controls" class="fixed bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-4 z-50">
+<div id="controls"
+    class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex flex-col items-center gap-3">
 
-    <button onclick="prevScene()"
-        class="bg-white/20 backdrop-blur px-4 py-2 rounded-full text-sm">
-        ◀
-    </button>
+    <!-- DOT PROGRESS -->
+    <div id="dots" class="flex gap-2"></div>
 
-    <div id="progress" class="text-sm opacity-70">1 / 6</div>
+    <!-- BUTTON -->
+    <div class="flex items-center gap-4 backdrop-blur bg-white/10 px-4 py-2 rounded-full">
 
-    <button onclick="nextScene()"
-        class="bg-white/20 backdrop-blur px-4 py-2 rounded-full text-sm">
-        ▶
-    </button>
+        <button onclick="prevScene()"
+            class="w-8 h-8 flex items-center justify-center rounded-full bg-white/20 hover:bg-white/40 transition">
+            ‹
+        </button>
 
+        <div id="progress" class="text-xs opacity-70 min-w-[40px] text-center">
+            1 / 6
+        </div>
+
+        <button onclick="nextScene()"
+            class="w-8 h-8 flex items-center justify-center rounded-full bg-white/20 hover:bg-white/40 transition">
+            ›
+        </button>
+
+    </div>
 </div>
 
 <script>
 let current = 0;
 let scenes = document.querySelectorAll(".scene");
 let total = scenes.length;
+
 let progress = document.getElementById("progress");
+let dotsContainer = document.getElementById("dots");
+
+/* FIX DOUBLE TAP */
+let lastTap = 0;
+
+function safeNext() {
+    const now = Date.now();
+    if (now - lastTap < 400) return; // chặn double
+    lastTap = now;
+    nextScene();
+}
 
 function updateUI() {
     progress.innerText = (current + 1) + " / " + total;
+
+    // update dots
+    dotsContainer.innerHTML = "";
+    for (let i = 0; i < total; i++) {
+        let dot = document.createElement("div");
+        dot.className = "w-2 h-2 rounded-full";
+        dot.style.background = i === current ? "white" : "rgba(255,255,255,0.3)";
+        dotsContainer.appendChild(dot);
+    }
 }
 
 function showScene(index) {
@@ -222,35 +253,14 @@ function prevScene() {
     }
 }
 
-/* CLICK NEXT */
+/* CLICK ONLY (bỏ touchstart) */
 document.addEventListener("click", (e) => {
-    // tránh click vào button bị trigger
     if (e.target.closest("#controls")) return;
-    nextScene();
-});
-
-/* TOUCH */
-document.addEventListener("touchstart", (e) => {
-    if (e.target.closest("#controls")) return;
-    nextScene();
+    safeNext();
 });
 
 /* INIT */
 updateUI();
-
-/* HEART (giữ nguyên nhưng nhẹ) */
-setInterval(() => {
-    if (Math.random() < 0.5) return;
-
-    let heart = document.createElement("div");
-    heart.className = "heart";
-    heart.innerText = "💖";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = (Math.random() * 12 + 16) + "px";
-    document.body.appendChild(heart);
-
-    setTimeout(() => heart.remove(), 7000);
-}, 600);
 </script>
 
 </body>
