@@ -101,7 +101,7 @@
     <div class="bg-img" style="background-image:url('https://images.unsplash.com/photo-1519681393784-d120267933ba')"></div>
     <div class="glass fadeUp">
         <h1 class="text-3xl mb-2">Hello Yến Khang</h1>
-        <p class="opacity-70">Tối nay mình đi chill một chút nha</p>
+        <p class="opacity-70">Tối nay chuẩn bị đi chill nhá</p>
         <p class="text-sm mt-3 opacity-50">chạm để xem tiếp</p>
     </div>
 </div>
@@ -110,8 +110,8 @@
 <div class="scene">
     <div class="bg-img" style="background-image:url('https://images.unsplash.com/photo-1504674900247-0877df9cc836')"></div>
     <div class="glass fadeUp">
-        <h2 class="text-2xl mb-3">18h</h2>
-        <p>Mình qua rước, bắt đầu buổi tối nhẹ nhàng</p>
+        <h2 class="text-2xl mb-3">🛎 18h</h2>
+        <p>Toy qua rước, go go go </p>
     </div>
 </div>
 
@@ -121,7 +121,7 @@
     <div class="glass fadeUp space-y-2">
         <h2 class="text-2xl mb-2">Đi ăn</h2>
 
-        <p class="opacity-70">Tùy nàng chọn 😌</p>
+        <p class="opacity-70">Một số chỗ nì</p>
 
         <p>• Đồ Thái → Little Chiang Mai</p>
         <p>• Mì Ý / beefsteak → Pasta Paradise (Phan Xích Long)</p>
@@ -138,7 +138,7 @@
     <div class="bg-img" style="background-image:url('https://images.unsplash.com/photo-1515562141207-7a88fb7ce338')"></div>
     <div class="glass fadeUp">
         <h2 class="text-2xl mb-2">Sau đó ghé PNJ</h2>
-        <p>Nàng muốn đi thì mình ghé qua một chút</p>
+        <p>Shoppingggggggg</p>
     </div>
 </div>
 
@@ -147,14 +147,14 @@
     <div class="bg-img" style="background-image:url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee')"></div>
     <div class="glass fadeUp">
         <h2 class="text-2xl mb-2">Đi dạo</h2>
-        <p>Chạy vòng vòng thành phố</p>
-        <p class="text-sm opacity-60">Nói chuyện một chút cho hết buổi tối</p>
+        <p>Chạy vòng vòng thành phố hoặc đi siêu thị</p>
+        <p class="text-sm opacity-60">Chilllllllllllllllllllllll</p>
     </div>
 </div>
 
 <!-- FINAL -->
 <div class="scene">
-    <div class="bg-img" style="background-image:url('https://images.unsplash.com/photo-1517841905240-472988babdf9')"></div>
+    <div class="bg-img" style="background-image:url('https://static.tuoitre.vn/tto/i/s626/2015/04/25/41B6gnc8.jpg')"></div>
     <div class="glass fadeUp">
         <h1 class="text-3xl mb-4">Một buổi tối đơn giản</h1>
         <p class="opacity-80">Đi ăn, đi dạo</p>
