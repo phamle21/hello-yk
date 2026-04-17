@@ -89,6 +89,10 @@
         .scene * {
             pointer-events: none;
         }
+
+        #controls button:hover {
+    background: rgba(255,255,255,0.3);
+}
     </style>
 </head>
 
@@ -163,32 +167,80 @@
     </div>
 </div>
 
+    <!-- CONTROLS -->
+<div id="controls" class="fixed bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-4 z-50">
+
+    <button onclick="prevScene()"
+        class="bg-white/20 backdrop-blur px-4 py-2 rounded-full text-sm">
+        ◀
+    </button>
+
+    <div id="progress" class="text-sm opacity-70">1 / 6</div>
+
+    <button onclick="nextScene()"
+        class="bg-white/20 backdrop-blur px-4 py-2 rounded-full text-sm">
+        ▶
+    </button>
+
+</div>
+
 <script>
 let current = 0;
 let scenes = document.querySelectorAll(".scene");
+let total = scenes.length;
+let progress = document.getElementById("progress");
+
+function updateUI() {
+    progress.innerText = (current + 1) + " / " + total;
+}
+
+function showScene(index) {
+    scenes.forEach(s => s.classList.remove("active"));
+    scenes[index].classList.add("active");
+
+    if (index === total - 1) {
+        confetti({
+            particleCount: 120,
+            spread: 90
+        });
+    }
+
+    updateUI();
+}
 
 function nextScene() {
-    if (current < scenes.length - 1) {
-        scenes[current].classList.remove("active");
+    if (current < total - 1) {
         current++;
-        scenes[current].classList.add("active");
-
-        if (current === scenes.length - 1) {
-            confetti({
-                particleCount: 120,
-                spread: 90
-            });
-        }
+        showScene(current);
     }
 }
 
-/* CLICK */
-document.addEventListener("click", nextScene);
-document.addEventListener("touchstart", nextScene);
+function prevScene() {
+    if (current > 0) {
+        current--;
+        showScene(current);
+    }
+}
 
-/* HEART (ít lại) */
+/* CLICK NEXT */
+document.addEventListener("click", (e) => {
+    // tránh click vào button bị trigger
+    if (e.target.closest("#controls")) return;
+    nextScene();
+});
+
+/* TOUCH */
+document.addEventListener("touchstart", (e) => {
+    if (e.target.closest("#controls")) return;
+    nextScene();
+});
+
+/* INIT */
+updateUI();
+
+/* HEART (giữ nguyên nhưng nhẹ) */
 setInterval(() => {
-    if (Math.random() < 0.5) return; // giảm 50%
+    if (Math.random() < 0.5) return;
 
     let heart = document.createElement("div");
     heart.className = "heart";
